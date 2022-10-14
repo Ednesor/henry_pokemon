@@ -14,7 +14,7 @@ const router = Router();
 router.use("/pokemons", getAll)
 router.use("/pokemons", createPoke)
 router.use("/types", getTypes)
-router.use("/pokemons/:id", getById)
+router.use("/pokemons", getById)
 
 
 module.exports = router;
