@@ -9,6 +9,7 @@ router.get("/:id", async (req, res) =>{
         res.json(data)
     } catch (error) {
         console.log("routes/getById", error)
+        res.status(400).json("No se encontró el pokemon")
     }
 })
 

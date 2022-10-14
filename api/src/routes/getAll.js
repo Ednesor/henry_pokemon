@@ -5,11 +5,15 @@ const router = Router();
 
 router.get("/", async (req, res) => {
     try {
-        const pokes = await allInfo();
+        let name = req.query.name;
 
-        res.json(pokes)
+        const pokes = await allInfo(name.toLowerCase());
+
+        res.json(pokes);
+
     } catch (error) {
-        console.log("routes/getAll", error)
+        console.log("routes/getAll", error);
+        res.status(400).json("Error al obtener la informacion")
     }
 })
 

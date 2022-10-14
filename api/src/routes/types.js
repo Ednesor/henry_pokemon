@@ -9,6 +9,7 @@ router.get("/", async (req, res) => {
         return res.json(types)
     } catch (error) {
         console.log("routes/types.js", error)
+        res.status(400).json("Error al obtener la informacion")
     }
 })
 

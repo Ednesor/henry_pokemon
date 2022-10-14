@@ -21,26 +21,37 @@ router.post("/", async (req, res) => {
         ) {
             return res.status(400).json("Faltan parametros");
         }
-        
+
         const findPoke = await Pokemon.findOne({
-            where:{
+            where: {
                 name: name,
             }
         })
-        if(findPoke){
+        if (findPoke) {
             return res.status(400).json("El nombre ya esta en uso")
         }
-        
+
         const newPoke = await Pokemon.create({
-            name, image, hp, attack, defense, special_attack, special_defense, speed, weight, height
+            name: name.toLowerCase(),
+            image,
+            hp,
+            attack,
+            defense,
+            special_attack,
+            special_defense,
+            speed,
+            weight,
+            height
         })
+
         const typesObj = await getTypes(types);
         const complete = await newPoke.addType(typesObj);
 
-        return res.json(complete)
+        return res.json(newPoke)
 
     } catch (error) {
         console.log("routes/createPoke", error);
+        res.status(400).json("No se pudo crear el pokemon")
     }
 })
 
