@@ -5,25 +5,32 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Navbar from './components/Navbar/Nabvar';
+import Landing from './components/Landing/Landing';
+import Home from './components/Home/Home';
+import Create from './components/Create/Create';
+import ErrorPage from './components/ErrorPage/ErrorPage';
+import Detailed from './components/Detailed/Detailed';
 
 function App() {
   return (
     <Router>
+      <Navbar />
       <Switch>
         <Route exact path="/">
-          <h1>Pagina de inicio</h1>
+          <Landing />
         </Route>
         <Route path="/home">
-          <h1>Home con las cards y los filtros</h1>
+          <Home />
         </Route>
         <Route path="/create">
-          <h1>Crear pokemon</h1>
+          <Create />
         </Route>
         <Route path="/details/:id">
-          <h1>detalles</h1>
+          <Detailed />
         </Route>
         <Route path="*">
-          <h1>Error, la pagina no existe :(</h1>
+          <ErrorPage />
         </Route>
         {/*//! no poner ruta search */}
       </Switch>
