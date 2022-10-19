@@ -5,8 +5,8 @@ import Card from "../Card/Card"
 export default function Cards({arrayPoke}){
 
     const createCards = () => {
-        return arrayPoke.map(p => {
-            return <Card pokemon={p}/>
+        return arrayPoke.map((p, i) => {
+            return <Card key={i} pokemon={p}/>
         })
     }
 

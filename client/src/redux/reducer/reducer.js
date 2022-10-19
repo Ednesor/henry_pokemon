@@ -1,5 +1,4 @@
 import {
-    FETCH_POKEMON,
     FETCH_POKEMON_REQUEST,
     FETCH_POKEMON_SUCCESS,
     CREATE_POKEMON,
@@ -10,13 +9,15 @@ import {
     FETCH_SEARCH_FAILURE,
     DETAILED_POKEMON_SUCCESS,
     FILTER_POKEMON,
-    FILTER_RESET
+    FILTER_RESET,
+    SET_PAGE
 } from "../actions/actions";
 
 const default_array_pokemon = {
     originalPokemons: [],
     pokemons: [],
     onePokemon: {},
+    page: 1,
     msg: "",
     loading: false
 };
@@ -102,6 +103,12 @@ const pokemons = (state = default_array_pokemon, action) => {
         case FILTER_RESET: {
             return{
                 ...state
+            }
+        }
+        case SET_PAGE: {
+            return{
+                ...state,
+                page: action.payload
             }
         }
         default:{

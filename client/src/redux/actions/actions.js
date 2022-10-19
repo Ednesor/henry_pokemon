@@ -13,6 +13,7 @@ export const DETAILED_POKEMON_SUCCESS = "DETAILED_POKEMON_SUCCESS";
 export const DETAILED_POKEMON = "DETAILED_POKEMON";
 export const FILTER_POKEMON = "FILTER_POKEMON";
 export const FILTER_RESET = "FILTER_RESET";
+export const SET_PAGE = "SET_PAGE";
 
 export const fetch_pokemon_request = () => {
     return {
@@ -148,5 +149,11 @@ export const filter_pokemon = (filtros) => {
 export const filter_reset = () => {
     return{
         type: FILTER_RESET
+    }
+}
+export const set_page = (page) => {
+    return{
+        type: SET_PAGE,
+        payload: page
     }
 }
