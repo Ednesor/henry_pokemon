@@ -11,7 +11,7 @@ export default function Navbar(){
                     <Link to={"/home"}>Home</Link>
                 </li>
                 <li>
-                    <Link to={"/create"}>Crear Pokémon</Link>
+                    <Link to={"/create"}>Create Pokémon</Link>
                 </li>
             </ul>
             <Search />
