@@ -7,9 +7,14 @@ router.get("/", async (req, res) => {
     try {
         let name = req.query.name;
 
-        const pokes = await allInfo(name.toLowerCase());
+        if(name){
+            const pokes = await allInfo(name.toLowerCase());
+            res.json(pokes);
+        }else{
+            const pokes = await allInfo();
+            res.json(pokes);
+        }
 
-        res.json(pokes);
 
     } catch (error) {
         console.log("routes/getAll", error);
