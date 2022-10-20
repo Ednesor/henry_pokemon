@@ -14,6 +14,7 @@ export const DETAILED_POKEMON = "DETAILED_POKEMON";
 export const FILTER_POKEMON = "FILTER_POKEMON";
 export const FILTER_RESET = "FILTER_RESET";
 export const SET_PAGE = "SET_PAGE";
+export const SET_SEARCH_SUCCESS = "SET_SEARCH_SUCCESS";
 
 export const fetch_pokemon_request = () => {
     return {
@@ -101,6 +102,11 @@ export const fetch_search_success = (pokemon) => {
         payload: pokemon
     }
 }
+export const set_search_success = () => {
+    return{
+        type: SET_SEARCH_SUCCESS,
+    }
+}
 export const fetch_search_failure = (error) => {
     return{
         type: FETCH_SEARCH_FAILURE,
@@ -113,7 +119,7 @@ export const search_request = (name) => {
         fetch(`http://localhost:3001/pokemons?name=${name}`)
         .then(response => response.json())
         .then(response => {
-            dispatch(fetch_search_success(response))
+            dispatch(fetch_search_success(response));
         })
         .catch(error => {
             console.log("no funca")

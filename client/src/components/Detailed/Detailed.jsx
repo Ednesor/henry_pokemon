@@ -11,11 +11,17 @@ export default function Detailed() {
     const { id } = useParams();
     const dispatch = useDispatch();
 
-    const updateData = () => {
-        if (pokemon.onePokemon.id !== parseInt(id) && !pokemon.loading) {
-            dispatch(detailed_pokemon(id))
+    useEffect(()=> {
+        const updateData = () => {
+            if (pokemon.onePokemon.id !== parseInt(id) && !pokemon.loading) {
+                dispatch(detailed_pokemon(id))
+            }
         }
-    }
+        if(parseInt(pokemon.onePokemon.id) !== parseInt(id) && !pokemon.loading && typeof(pokemon.onePokemon)!=="string"){
+            updateData()
+        }
+    },[dispatch, id, pokemon.loading, pokemon.onePokemon]) 
+    
     const showTypes = () => {
         return pokemon.onePokemon.types.map((t, i) => {
             t = t.substring(0, 1).toUpperCase() + t.substring(1, t.length);
@@ -40,9 +46,10 @@ export default function Detailed() {
     }
     const selectImage = () => {
         let num = Math.round(Math.random()*100);
-        if(num <= 10 && pokemon.onePokemon.imageShiny){
+        if(num === 10 && pokemon.onePokemon.imageShiny){
             return pokemon.onePokemon.imageShiny
         }
+        console.log(pokemon.onePokemon.name, num)
         return pokemon.onePokemon.image
     }
     const showData = () => {
@@ -62,7 +69,6 @@ export default function Detailed() {
 
     return (
         <div>
-            {(parseInt(pokemon.onePokemon.id) !== parseInt(id) && !pokemon.loading && typeof(pokemon.onePokemon)!=="string") && updateData()}
             {(parseInt(pokemon.onePokemon.id) === parseInt(id) && !pokemon.loading && typeof(pokemon.onePokemon)!=="string") && showData()}
             {pokemon.loading && <Loading/>}
             {typeof(pokemon.onePokemon)==="string" && <ErrorPage />}

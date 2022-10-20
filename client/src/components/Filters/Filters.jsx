@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { filter_pokemon, filter_reset } from "../../redux/actions/actions";
 import style from "./Filters.module.css";
 
 export default function Filters() {
@@ -8,6 +10,7 @@ export default function Filters() {
         type: "all",
         sort: "A-Z"
     });
+    const dispatch = useDispatch()
 
     const changeFilters = (filter, value) => {
         let newFilter = filters;
@@ -19,9 +22,11 @@ export default function Filters() {
         if (e.target.getAttribute("filter") === "origin") changeFilters("origin", e.target.getAttribute("id"));
         if(e.target.getAttribute("filter") === "type") changeFilters("type", e.target[e.target.selectedIndex].getAttribute("id"));
         if(e.target.getAttribute("filter") === "sort") changeFilters("sort", e.target[e.target.selectedIndex].getAttribute("id"));
+        console.log(filters)
+        dispatch(filter_pokemon(filters))
     }
     const handleReset = () => {
-        console.log(filters)
+        dispatch(filter_reset())
     }
 
     return (
@@ -72,7 +77,8 @@ export default function Filters() {
             </div>
             <div>
                 <p>Sort</p>
-                <select name="" id="">
+                <select onChange={handleChange} filter="sort">
+                    <option id="none">None</option>
                     <option id="A-Z">A-Z</option>
                     <option id="Z-A">Z-A</option>
                     <option id="100-0">Best attack</option>
