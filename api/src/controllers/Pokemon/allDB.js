@@ -14,7 +14,7 @@ const allDB = async () => {
         console.log("allDB",dbData.length)
         let output = [];
         for (const pokemon of dbData) {
-            let {name, id, image, hp, attack, defense, special_attack, special_defense, speed, weight, height} = pokemon;
+            let {name, id, image, hp, attack, defense, special_attack, special_defense, speed, weight, height, createDB} = pokemon;
             let types = pokemon.types.map(t => t.name)
             let stats = [
                 ["hp", hp],
@@ -24,7 +24,7 @@ const allDB = async () => {
                 ["special-defense", special_defense],
                 ["speed", speed]
             ]
-            output.push({name, id, image, stats, weight, height, types})
+            output.push({name, id, image, stats, weight, height, types, createDB})
         }
         return output;
 
