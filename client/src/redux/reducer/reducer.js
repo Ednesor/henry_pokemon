@@ -129,7 +129,7 @@ const pokemons = (state = default_array_pokemon, action) => {
                 }
             }
             if(action.payload.sort !== ""){
-                if(action.payload.type !== "none"){
+                if(action.payload.sort !== "none"){
                     switch (action.payload.sort) {
                         case "A-Z":
                             let n = newPokes.length;

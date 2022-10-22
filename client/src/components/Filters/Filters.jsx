@@ -8,7 +8,7 @@ export default function Filters() {
     const [filters, setFilters] = useState({
         origin: "all",
         type: "all",
-        sort: "A-Z"
+        sort: "none"
     });
     const dispatch = useDispatch()
 
@@ -18,7 +18,6 @@ export default function Filters() {
         setFilters(newFilter)
     }
     const handleChange = (e) => {
-        console.log(e.target.getAttribute("filter"))
         if (e.target.getAttribute("filter") === "origin") changeFilters("origin", e.target.getAttribute("id"));
         if(e.target.getAttribute("filter") === "type") changeFilters("type", e.target[e.target.selectedIndex].getAttribute("id"));
         if(e.target.getAttribute("filter") === "sort") changeFilters("sort", e.target[e.target.selectedIndex].getAttribute("id"));

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useLocation} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { search_request, set_search_success } from "../../redux/actions/actions";
 import style from "./Search.module.css";
 
@@ -10,7 +10,6 @@ export default function Search() {
     const dispatch = useDispatch();
     const pokemon = useSelector((state) => state.pokemon);
     const history = useHistory();
-    const location = useLocation()
 
     useEffect(() => {
         const redirect = () => {

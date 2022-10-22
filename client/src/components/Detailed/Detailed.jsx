@@ -49,7 +49,6 @@ export default function Detailed() {
         if(num === 10 && pokemon.onePokemon.imageShiny){
             return pokemon.onePokemon.imageShiny
         }
-        console.log(pokemon.onePokemon.name, num)
         return pokemon.onePokemon.image
     }
     const showData = () => {
