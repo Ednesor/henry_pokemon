@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
 
         const findPoke = await Pokemon.findOne({
             where: {
-                name: name,
+                name: name.toLowerCase(),
             }
         })
         if (findPoke) {
@@ -47,6 +47,7 @@ router.post("/", async (req, res) => {
         const typesObj = await getTypes(types);
         const complete = await newPoke.addType(typesObj);
 
+        
         return res.json(newPoke)
 
     } catch (error) {
