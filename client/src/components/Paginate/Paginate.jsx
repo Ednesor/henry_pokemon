@@ -10,12 +10,13 @@ export default function Paginate(){
     const dispatch = useDispatch();
 
     const handlePageClick = (e) => {
+        console.log(pokemon.page, e.target.innerText)
         dispatch(set_page(e.target.innerText))
     }
     const pageButtons = () => {
         let array = [];
         for (let i = 0; i < Math.ceil(pokemon.pokemons.length/paginado); i++) {
-            array.push(<button key={i} onClick={handlePageClick}>{i+1}</button>)
+            array.push(<button key={i} onClick={handlePageClick} className={`${style.button} ${parseInt(pokemon.page) === parseInt(i+1) && style.active}`}>{i+1}</button>)
         }
         return array;
     }
@@ -25,11 +26,12 @@ export default function Paginate(){
     }
 
     return(
-        <div>
-            <div>
+        <div className={style.container}>
+            {pokemon.pokemons.length === 0 && <p>No se encontro ningun Pokemon</p>}
+            <div className={style.pagContainer}>
                 {pageButtons()}
-                </div>
-            <div>
+            </div>
+            <div className={style.containerCards}>
                 {paginateCards()}
             </div>
         </div>

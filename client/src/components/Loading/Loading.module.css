@@ -1,0 +1,8 @@
+.container{
+    background-color: #181B1D;
+    display: flex;
+    justify-content: center;
+    height: 90.8vh;
+    width: 100%;
+    padding-top: 70px;
+}

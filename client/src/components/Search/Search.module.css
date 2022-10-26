@@ -1,0 +1,28 @@
+.container{
+    padding: 15px;
+}
+.searchInput{
+    border-radius: 5px;
+    height: 20px;
+    border: 2px solid #616161;
+    margin-right: 10px;
+}
+.searchInput:focus{
+    outline: none;
+}
+.searchButton{
+    border-radius: 5px;
+    height: 50px;
+    width: 60px;
+    border: 0px;
+    background-color: #fc6c2f;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.61);
+    transition: all .25s;
+}
+.searchButton:hover{
+    background-color: #cf5723;
+    cursor: pointer;
+}

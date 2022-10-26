@@ -1,0 +1,104 @@
+.container{
+    width: 100%;
+    padding-top: 70px;
+    display: flex;
+    justify-content: center;
+    background-color: #A4A4A4;
+    height: 90.8vh;
+}
+.dataCont{
+    max-width: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: white;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+.name{
+    width: 45%;
+    text-align: end;
+    font-size: 40px;
+    font-weight: 400;
+    color: #212121;
+    margin: 10px;
+    padding-right: 5px;
+    height: 50px;
+}
+.id{
+    width: 45%;
+    text-align: left;
+    font-size: 40px;
+    font-weight: 400;
+    color: #616161;
+    margin: 10px;
+    padding-left: 5px;
+}
+.image{
+    background-color: #F2F2F2;
+    width: 47%;
+    height: auto;
+    border-radius: 10px;
+}
+.textContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.statsCont{
+    height: 25rem;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    background-color: #A4A4A4;
+    padding: 20px;
+}
+.statsTitle{
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+}
+.stat{
+    height: 40px;
+    margin-bottom: 10px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+.statName{
+    width: 30%;
+    text-align: initial;
+}
+.statNum{
+    width: 70%;
+    text-align: center;
+    display: flex;
+}
+.statNum span{
+    width: 100%;
+}
+.typeCont{
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+.type{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    border-radius: 5px;
+    height: 35px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+.altStat{
+    width: 25%;
+    text-align: left;
+    font-size: 20px;
+}

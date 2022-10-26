@@ -1,0 +1,64 @@
+.container{
+    position: fixed;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    margin-top: 70px;
+    background-color: #313131;
+    padding-bottom: 20px;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.644);
+}
+label{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.button{
+    width: 90px;
+    height: 50px;
+    border-radius: 10px;
+    border: 0px;
+    color: white;
+    background-color: #FC6C2F;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.747);
+    margin-top: 30px;
+    cursor: pointer;
+    transition: all .25s;
+}
+.button:hover{
+    background-color: #b14e24;
+}
+.inputOrigin{
+    display: none;
+}
+.inputOrigin:checked ~ .originSpan{
+    background-color: #1B82B1;
+    color: black;
+}
+.originSpan{
+    background-color: #313131;
+    width: 50px;
+    height: 30px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    color: #8F8F8F;
+    transition: all .25s;
+    cursor: pointer;
+}
+.originSpan:hover{
+    background-color: #272727;
+}
+.originCont{
+    display: flex;
+}
+.title{
+    text-align: center;
+    color: #bbbbbb;
+}

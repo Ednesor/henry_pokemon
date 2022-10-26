@@ -1,0 +1,68 @@
+.container{
+    background: radial-gradient(circle at 50%, white, #75E8FA 20%, #0035b9 60%, #002172 70%);
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0px;
+    animation: containeranim 10s infinite;
+    animation-direction: alternate, reverse, normal;
+    animation-timing-function: ease-in-out;
+    z-index: 10;
+}
+@keyframes containeranim {
+    from{background-size: 100%;}
+    to{background-size: 150%;}
+}
+.image{
+    margin-top: 5%;
+    width: 50%;
+    height: auto;
+    filter: drop-shadow(0 0 0.75rem white);
+    animation: logoanim 5s infinite;
+    animation-direction: alternate, reverse, normal;
+}
+@keyframes logoanim {
+    0% {filter: drop-shadow(0 0 5rem white);}
+    30% {filter: drop-shadow(0 0 0.75rem white);}
+    100% {filter: drop-shadow(0 0 0.75rem white);} 
+}
+.title{
+    margin-bottom: 100px;
+    width: 100%;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: #FFCB05;
+    text-shadow: 2px 0 #3A5CA8, -2px 0 #3A5CA8, 0 2px #3A5CA8, 0 -2px #3A5CA8, 1px 1px #3A5CA8, -1px -1px #3A5CA8, 1px -1px #3A5CA8, -1px 1px #3A5CA8;
+}
+.button{
+    width: 100%;
+    background: rgb(2,0,36);
+    background: linear-gradient(279deg, #05112D 30%, #10285f 50%, #05112D 70%);
+    opacity: 0.8;
+    box-shadow: inset 0px 0px 5px #05112D, inset 0px 0px 5px #05112D;
+    text-decoration: none;
+}
+.text{
+    font-size: 30px;
+    padding: 5px;
+    color: white;
+    text-align: center;
+    text-shadow: 0px 0px 10px #AFDDF6;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    margin: 0px;
+    opacity: 1;
+    animation: textanim 2s infinite;
+    animation-direction: alternate, reverse, normal;
+    animation-timing-function: ease-out;
+}
+@keyframes textanim {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}

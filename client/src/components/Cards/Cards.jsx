@@ -11,7 +11,7 @@ export default function Cards({arrayPoke}){
     }
 
     return(
-        <div>
+        <div className={style.container}>
             {createCards()}
         </div>
     )

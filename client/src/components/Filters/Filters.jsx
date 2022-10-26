@@ -29,27 +29,26 @@ export default function Filters() {
     }
 
     return (
-        <div>
-            <p>Filters</p>
+        <div className={style.container}>
             <div>
-                <p>Origin</p>
-                <div>
-                    <label htmlFor="">
-                        ALL
-                        <input type="radio" name="origin" id="all" onChange={handleChange} filter="origin" />
+                <p className={style.title}>Origin</p>
+                <div className={style.originCont}>
+                    <label htmlFor="all">
+                        <input type="radio" name="origin" id="all" onChange={handleChange} filter="origin" className={style.inputOrigin} />
+                        <span className={style.originSpan}>ALL</span>
                     </label>
-                    <label htmlFor="">
-                        DB
-                        <input type="radio" name="origin" id="db" onChange={handleChange} filter="origin" />
+                    <label htmlFor="db">
+                        <input type="radio" name="origin" id="db" onChange={handleChange} filter="origin" className={style.inputOrigin} />
+                       <span className={style.originSpan}>DB</span> 
                     </label>
-                    <label htmlFor="">
-                        API
-                        <input type="radio" name="origin" id="api" onChange={handleChange} filter="origin" />
+                    <label htmlFor="api">
+                        <input type="radio" name="origin" id="api" onChange={handleChange} filter="origin" className={style.inputOrigin} />
+                        <span className={style.originSpan}>API</span>
                     </label>
                 </div>
             </div>
             <div>
-                <p>Type</p>
+                <p className={style.title}>Type</p>
                     <select onChange={handleChange} filter="type" >
                         <option id="all">All</option>
                         <option id="normal">Normal</option>
@@ -75,7 +74,7 @@ export default function Filters() {
                     </select>
             </div>
             <div>
-                <p>Sort</p>
+                <p className={style.title}>Sort</p>
                 <select onChange={handleChange} filter="sort">
                     <option id="none">None</option>
                     <option id="A-Z">A-Z</option>
@@ -84,7 +83,7 @@ export default function Filters() {
                     <option id="0-100">Worst attack</option>
                 </select>
             </div>
-            <button onClick={handleReset}>Reset filters</button>
+            <button onClick={handleReset} className={style.button}>Reset filters</button>
         </div>
     )
 }

@@ -1,17 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import style from "./Navbar.module.css";
 import Search from "../Search/Search"
 
-export default function Navbar(){
-    return(
-        <div>
-            <ul>
-                <li>
-                    <Link to={"/home"}>Home</Link>
+export default function Navbar() {
+    return (
+        <div className={style.container}>
+            <ul className={style.ulContainer}>
+                <li className={style.liContainer}>
+                    <NavLink
+                        to={"/home"}
+                        className={style.link}
+                        activeClassName={style.selected}
+                    >Home
+                    </NavLink>
                 </li>
-                <li>
-                    <Link to={"/create"}>Create Pokémon</Link>
+                <li className={style.liContainer}>
+                    <NavLink
+                        to={"/create"}
+                        className={style.link}
+                        activeClassName={style.selected}
+                    >Create Pokémon
+                    </NavLink>
                 </li>
             </ul>
             <Search />

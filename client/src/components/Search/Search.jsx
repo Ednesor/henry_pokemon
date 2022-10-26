@@ -37,9 +37,9 @@ export default function Search() {
         }
     }
     return (
-        <div>
-            <input type="text" name="" id="" onChange={handleChange} value={search} />
-            <button onClick={handleClick}>Search</button>
+        <div className={style.container}>
+            <input type="text" name="" id="" onChange={handleChange} value={search} className={style.searchInput} />
+            <button onClick={handleClick} className={style.searchButton}>Search</button>
         </div>
     )
 }

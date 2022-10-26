@@ -118,8 +118,8 @@ export default function Create() {
     const createCheckbox = () => {
         let array = ["Normal", "Fighting", "Flying", "Poison", "Ground", "Rock", "Bug", "Ghost", "Steel", "Fire", "Water", "Grass", "Electric", "Psychic", "Ice", "Dragon", "Dark", "Fairy", "Unkwown", "Shadow"];
         return array.map((t, i) => {
-            return <label key={i}>
-                <input type="checkbox" id={t.toLowerCase()} name="types" onChange={handleChange} />
+            return <label key={i} className={style.labelCheck}>
+                <input type="checkbox" id={t.toLowerCase()} name="types" onChange={handleChange} className={style.inputCheck} />
                 <span>{t}</span>
             </label>
         })
@@ -128,11 +128,11 @@ export default function Create() {
         let array = ["hp", "attack", "defense", "special attack", "special defense", "speed"];
         return array.map((s, i) => {
             return (
-                    <div key={i}>
+                    <div key={i} className={style.contStatsInd}>
                         <label htmlFor="">{s.substring(0,1).toUpperCase()+s.substring(1,s.length)}</label>
-                        <input type="range" id={s} min={1} max={255} step={1} name={s.replace(/\s/g, '_')} value={dataPokemon[s.replace(/\s/g, '_')]} onChange={handleChange} />
+                        <input type="range" id={s} min={1} max={255} step={1} name={s.replace(/\s/g, '_')} value={dataPokemon[s.replace(/\s/g, '_')]} onChange={handleChange} className={style.inputRange} />
                         <span>{dataPokemon[s.replace(/\s/g, '_')]}</span>
-                        <p>{errors[s.replace(/\s/g, '_')] && errors[s.replace(/\s/g, '_')]}</p>
+                        <p className={style.errors}>{errors[s.replace(/\s/g, '_')] && errors[s.replace(/\s/g, '_')]}</p>
                     </div>
             )
         })
@@ -156,35 +156,35 @@ export default function Create() {
     }
 
     return (
-        <div>
-            <p>Create Pokemon</p>
-            <form>
-                <div>
+        <div className={style.container}>
+            <p className={style.title}>Create Pokemon</p>
+            <form className={style.formClass}>
+                <div className={style.contInputText}>
                     <label htmlFor="">Name</label>
-                    <input type="text" name="name" value={dataPokemon.name} onChange={handleChange} />
-                    <p>{errors.name && errors.name}</p>
+                    <input type="text" name="name" value={dataPokemon.name} onChange={handleChange} className={style.inputText} />
+                    <p className={style.errors}>{errors.name && errors.name}</p>
                 </div>
-                <div>
+                <div className={style.contInputText}>
                     <label htmlFor="">Image URL</label>
-                    <input type="text" name="image" value={dataPokemon.image} onChange={handleChange} />
-                    <p>{errors.image && errors.image}</p>
+                    <input type="text" name="image" value={dataPokemon.image} onChange={handleChange} className={style.inputText} />
+                    <p className={style.errors}>{errors.image && errors.image}</p>
                 </div>
-                <div>
+                <div className={style.contTypes}>
                     {createCheckbox()}
-                    <p>{errors.types && errors.types}</p>
+                    <p className={style.errors}>{errors.types && errors.types}</p>
                 </div>
-                <div>
+                <div className={style.contStats}>
                     {createStats()}
                 </div>
-                <div>
+                <div className={style.contInputText}>
                     <label htmlFor="">Height (M)</label>
-                    <input type="text" name="height" value={dataPokemon.height} onChange={handleChange} />
-                    <p>{errors.height && errors.height}</p>
+                    <input type="text" name="height" value={dataPokemon.height} onChange={handleChange} className={style.inputText} />
+                    <p className={style.errors}>{errors.height && errors.height}</p>
                 </div>
-                <div>
+                <div className={style.contInputText}>
                     <label htmlFor="">Weight (Kg)</label>
-                    <input type="text" name="weight" value={dataPokemon.weight} onChange={handleChange} />
-                    <p>{errors.weight && errors.weight}</p>
+                    <input type="text" name="weight" value={dataPokemon.weight} onChange={handleChange} className={style.inputText} />
+                    <p className={style.errors}>{errors.weight && errors.weight}</p>
                 </div>
             </form>
             <button onClick={handleSubmit}>Submit</button>
