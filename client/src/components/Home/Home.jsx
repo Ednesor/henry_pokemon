@@ -18,7 +18,7 @@ export default function Home(){
 
     return(
         <div className={style.container}>
-            {(pokemon.loading && pokemon.originalPokemons.length === 0) && <Loading />}
+            {(pokemon.loading) && <Loading />}
             {(!pokemon.loading && pokemon.originalPokemons.length > 0) && <Filters />}
             {(!pokemon.loading && pokemon.originalPokemons.length > 0) && <Paginate/>}
         </div>

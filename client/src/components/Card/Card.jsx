@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import style from "./Card.module.css";
+import imageDefault from "./imageDefault.jpg";
 
 export default function Card({ pokemon }) {
 
@@ -111,7 +112,7 @@ export default function Card({ pokemon }) {
     }
     return (
         <div className={style.container}>
-            <img src={selectImage()} alt="pokemon-Pic" className={style.image} />
+            <img src={selectImage()} alt="pokemon-Pic" className={style.image} onError={(e => {e.target.onerror = null; e.target.src = imageDefault})} />
             <p className={style.name}>{pokemon.name.substring(0,1).toUpperCase()+pokemon.name.substring(1,pokemon.name.length)}</p>
             {showTypes()}
             <Link to={`details/${pokemon.id}`} className={style.button}>More details</Link>

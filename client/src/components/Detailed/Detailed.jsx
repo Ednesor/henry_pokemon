@@ -5,6 +5,7 @@ import { detailed_pokemon } from "../../redux/actions/actions";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Loading from "../Loading/Loading";
 import style from "./Detailed.module.css";
+import imageDefault from "./defaultImage.jpg";
 
 export default function Detailed() {
     const pokemon = useSelector(state => state.pokemon);
@@ -148,7 +149,7 @@ export default function Detailed() {
                     <p className={style.name}>{pokemon.onePokemon.name.substring(0, 1).toUpperCase() + pokemon.onePokemon.name.substring(1, pokemon.onePokemon.name.length)}</p>
                     <p className={style.id}>N.° {pokemon.onePokemon.id}</p>
                 </div>
-                <img src={selectImage()} alt="" className={style.image} />
+                <img src={selectImage()} alt="pokemon" className={style.image} onError={(e => {e.target.onerror = null; e.target.src = imageDefault})} />
                 <div style={{ width: "50%" }}>
                     <div className={style.typeCont}>
                         {showTypes()}

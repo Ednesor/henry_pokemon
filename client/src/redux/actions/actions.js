@@ -64,9 +64,14 @@ export const fetch_create_pokemon = (pokemon) => {
         })
         .then(response => response.json())
         .then(response => {
-            console.log(pokemon)
-            alert("Pokemon creado exitosamente");
-            dispatch(create_pokemon(pokemon))
+            if(typeof(response) === "string"){
+                alert(response)
+            }else{
+                let poke = response;
+                poke.types = pokemon.types
+                alert("Pokemon creado exitosamente");
+                dispatch(create_pokemon(response))
+            }
         })
         .catch(error => {
             alert("No se pudo crear el pokemon")

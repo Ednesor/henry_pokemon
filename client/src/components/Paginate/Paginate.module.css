@@ -15,6 +15,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .button{
     width: 30px;
@@ -27,6 +28,9 @@
     font-size: 15px;
     color: white;
     transition: all .25s;
+}
+.button:hover{
+    background-color: #474747;
 }
 .active{
     background-color: #34b7eb;

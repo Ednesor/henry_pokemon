@@ -4,9 +4,11 @@ import {Link} from "react-router-dom";
 
 export default function ErrorPage(){
     return(
-        <div>
-            <p>Pagina no encontrada</p>
-            <Link to={"/home"}>Home</Link>
+        <div className={style.container}>
+            <div className={style.mini}>
+                <p className={style.title}>Pagina no encontrada</p>
+                <Link to={"/home"} className={style.button}>Home</Link>
+            </div>
         </div>
     )
 }

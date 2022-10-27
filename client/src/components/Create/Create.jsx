@@ -37,17 +37,17 @@ export default function Create() {
         let error = "";
         switch (type) {
             case "name":
-                if(!/^[A-Za-z\s]*$/.test(data)) error = "No se permiten numeros o caracteres especiales";
+                if (!/^[A-Za-z\s]*$/.test(data)) error = "No se permiten numeros o caracteres especiales";
                 if (data[0] === " ") error = "No pueden haber espacios al inicio";
                 if (data === "") error = "No puede quedar vacio";
-                if(data.length > 100) error = "No se permiten mas de 100 caracteres";
+                if (data.length > 100) error = "No se permiten mas de 100 caracteres";
                 break;
             case "image":
                 if (data[0] === ".") error = "Ingrese una url valida"
                 if (!(data.substring(data.length - 4) === ".png" || data.substring(data.length - 4) === ".jpg")) error = "Debe ser un archivo PNG o JPG";
                 if (data.includes(" ")) error = "La url de la imagen no puede contener espacios";
                 if (data === "") error = "No puede quedar vacio";
-                if(data.length > 200) error = "No se permiten mas de 200 caracteres";
+                if (data.length > 200) error = "No se permiten mas de 200 caracteres";
                 break;
             case "hp":
             case "attack":
@@ -59,15 +59,15 @@ export default function Create() {
                 break;
             case "height":
             case "weight":
-                if(data <= 0) error = "Ingrese un numero mayor a 0";
+                if (data <= 0) error = "Ingrese un numero mayor a 0";
                 if (data.includes(" ")) error = "No se permiten espacios";
-                if(data === "") error = "No puede quedar vacio"
-                if(isNaN(data)) error = "Ingrese un numero";
-                if(data.includes(",")) error = "No se permiten \",\""
+                if (data === "") error = "No puede quedar vacio"
+                if (isNaN(data)) error = "Ingrese un numero";
+                if (data.includes(",")) error = "No se permiten \",\""
                 break;
             case "types":
-                if(data.length === 0) error = "Debe escoger al menos un tipo"
-                if(data.length > 2) error = "No se pueden seleccionar más de dos tipos"
+                if (data.length === 0) error = "Debe escoger al menos un tipo"
+                if (data.length > 2) error = "No se pueden seleccionar más de dos tipos"
                 break;
             default:
                 console.log("Parametros error incorrecto")
@@ -80,33 +80,33 @@ export default function Create() {
     }
     const handleChange = (e) => {
         let arr = [];
-        if(e.target.name === "name" || e.target.name === "image"){
+        if (e.target.name === "name" || e.target.name === "image") {
             setDataPokemon({
                 ...dataPokemon,
                 [e.target.name]: e.target.value
             });
-        }else if(e.target.name === "height" || e.target.name === "weight"){
+        } else if (e.target.name === "height" || e.target.name === "weight") {
             setDataPokemon({
                 ...dataPokemon,
                 [e.target.name]: e.target.value
             });
         }
-        else if(e.target.name === "types"){
-            if(e.target.checked){
+        else if (e.target.name === "types") {
+            if (e.target.checked) {
                 arr = [...dataPokemon.types, e.target.id]
                 setDataPokemon({
                     ...dataPokemon,
                     types: arr
                 })
-            }else{
+            } else {
                 arr = dataPokemon.types.filter(t => t !== e.target.id)
                 setDataPokemon({
                     ...dataPokemon,
                     types: arr
                 })
             }
-            
-        }else{
+
+        } else {
             setDataPokemon({
                 ...dataPokemon,
                 [e.target.name]: e.target.value
@@ -116,7 +116,7 @@ export default function Create() {
     }
 
     const createCheckbox = () => {
-        let array = ["Normal", "Fighting", "Flying", "Poison", "Ground", "Rock", "Bug", "Ghost", "Steel", "Fire", "Water", "Grass", "Electric", "Psychic", "Ice", "Dragon", "Dark", "Fairy", "Unkwown", "Shadow"];
+        let array = ["Normal", "Fighting", "Flying", "Poison", "Ground", "Rock", "Bug", "Ghost", "Steel", "Fire", "Water", "Grass", "Electric", "Psychic", "Ice", "Dragon", "Dark", "Fairy", "Unknown", "Shadow"];
         return array.map((t, i) => {
             return <label key={i} className={style.labelCheck}>
                 <input type="checkbox" id={t.toLowerCase()} name="types" onChange={handleChange} className={style.inputCheck} />
@@ -128,29 +128,29 @@ export default function Create() {
         let array = ["hp", "attack", "defense", "special attack", "special defense", "speed"];
         return array.map((s, i) => {
             return (
-                    <div key={i} className={style.contStatsInd}>
-                        <label htmlFor="">{s.substring(0,1).toUpperCase()+s.substring(1,s.length)}</label>
-                        <input type="range" id={s} min={1} max={255} step={1} name={s.replace(/\s/g, '_')} value={dataPokemon[s.replace(/\s/g, '_')]} onChange={handleChange} className={style.inputRange} />
-                        <span>{dataPokemon[s.replace(/\s/g, '_')]}</span>
-                        <p className={style.errors}>{errors[s.replace(/\s/g, '_')] && errors[s.replace(/\s/g, '_')]}</p>
-                    </div>
+                <div key={i} className={style.contStatsInd}>
+                    <label htmlFor="">{s.substring(0, 1).toUpperCase() + s.substring(1, s.length)}</label>
+                    <input type="range" id={s} min={1} max={255} step={1} name={s.replace(/\s/g, '_')} value={dataPokemon[s.replace(/\s/g, '_')]} onChange={handleChange} className={style.inputRange} />
+                    <span>{dataPokemon[s.replace(/\s/g, '_')]}</span>
+                    <p className={style.errors}>{errors[s.replace(/\s/g, '_')] && errors[s.replace(/\s/g, '_')]}</p>
+                </div>
             )
         })
     }
     const checkAllErrors = () => {
         let error = ""
-        for(let e in errors){
-            if(dataPokemon[e].length === 0 || dataPokemon[e] === 0 || errors[e] !== ""){
+        for (let e in errors) {
+            if (dataPokemon[e].length === 0 || dataPokemon[e] === 0 || errors[e] !== "") {
                 error = "Campos vacios o con errores"
             }
         }
-        if(error !== ""){
+        if (error !== "") {
             alert(error);
             return false;
-        }else return true;
+        } else return true;
     }
     const handleSubmit = () => {
-        if(checkAllErrors()){
+        if (checkAllErrors()) {
             dispatch(fetch_create_pokemon(dataPokemon))
         }
     }
@@ -159,35 +159,39 @@ export default function Create() {
         <div className={style.container}>
             <p className={style.title}>Create Pokemon</p>
             <form className={style.formClass}>
-                <div className={style.contInputText}>
-                    <label htmlFor="">Name</label>
-                    <input type="text" name="name" value={dataPokemon.name} onChange={handleChange} className={style.inputText} />
-                    <p className={style.errors}>{errors.name && errors.name}</p>
-                </div>
-                <div className={style.contInputText}>
-                    <label htmlFor="">Image URL</label>
-                    <input type="text" name="image" value={dataPokemon.image} onChange={handleChange} className={style.inputText} />
-                    <p className={style.errors}>{errors.image && errors.image}</p>
-                </div>
-                <div className={style.contTypes}>
-                    {createCheckbox()}
-                    <p className={style.errors}>{errors.types && errors.types}</p>
+                <div style={{ width: "45%", display: "flex", alignItems: "flex-start", flexWrap: "wrap", justifyContent:"center" }}>
+                    <div className={style.contInputText}>
+                        <label htmlFor="">Name</label>
+                        <input type="text" name="name" value={dataPokemon.name} onChange={handleChange} className={style.inputText} />
+                        <p className={style.errors}>{errors.name && errors.name}</p>
+                    </div>
+                    <div className={style.contInputText}>
+                        <label htmlFor="">Image URL</label>
+                        <input type="text" name="image" value={dataPokemon.image} onChange={handleChange} className={style.inputText} />
+                        <p className={style.errors}>{errors.image && errors.image}</p>
+                    </div>
+                    <div className={style.contTypes}>
+                        {createCheckbox()}
+                        <p className={style.errors}>{errors.types && errors.types}</p>
+                    </div>
+                    <div className={style.contInputText}>
+                        <label htmlFor="">Height (M)</label>
+                        <input type="text" name="height" value={dataPokemon.height} onChange={handleChange} className={style.inputText} />
+                        <p className={style.errors}>{errors.height && errors.height}</p>
+                    </div>
+                    <div className={style.contInputText}>
+                        <label htmlFor="">Weight (Kg)</label>
+                        <input type="text" name="weight" value={dataPokemon.weight} onChange={handleChange} className={style.inputText} />
+                        <p className={style.errors}>{errors.weight && errors.weight}</p>
+                    </div>
                 </div>
                 <div className={style.contStats}>
                     {createStats()}
                 </div>
-                <div className={style.contInputText}>
-                    <label htmlFor="">Height (M)</label>
-                    <input type="text" name="height" value={dataPokemon.height} onChange={handleChange} className={style.inputText} />
-                    <p className={style.errors}>{errors.height && errors.height}</p>
-                </div>
-                <div className={style.contInputText}>
-                    <label htmlFor="">Weight (Kg)</label>
-                    <input type="text" name="weight" value={dataPokemon.weight} onChange={handleChange} className={style.inputText} />
-                    <p className={style.errors}>{errors.weight && errors.weight}</p>
-                </div>
             </form>
-            <button onClick={handleSubmit}>Submit</button>
+            <div className={style.buttonCont}>
+            <button onClick={handleSubmit} className={style.button}>Submit</button>
+            </div>
         </div>
     )
 }

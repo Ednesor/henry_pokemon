@@ -3,7 +3,8 @@
     padding-top: 70px;
     display: flex;
     justify-content: center;
-    background-color: #A4A4A4;
+    background-color: #616161;
+    background: repeating-linear-gradient( -45deg, #474747, #474747 12.5px, #616161 12.5px, #616161 62.5px );
     height: 90.8vh;
 }
 .dataCont{

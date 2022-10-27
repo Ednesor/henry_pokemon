@@ -1,0 +1,35 @@
+.container{
+    background-color: #616161;
+    background: repeating-linear-gradient( -45deg, #474747, #474747 12.5px, #616161 12.5px, #616161 62.5px );
+    height: 100vh;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title{
+    width: 100%;
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    color: #9e9e9e;
+    font-size: 30px;
+}
+.button{
+    margin: 10px;
+    text-decoration: none;
+     color: white;
+    background-color: #FC6C2F;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0px;
+}
+.mini{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #313131;
+    border-radius: 20px;
+}

@@ -4,9 +4,11 @@
     margin: 5px;
     margin-bottom: 20px;
     transition: all .25s;
+    z-index: 1;
 }
 .container:hover{
     transform: translateY(-10px);
+    z-index: 1;
 }
 
 .image{
