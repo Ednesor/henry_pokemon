@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { Pokemon, Type } = require("../db");
-const getTypes = require("../controllers/Type/createTypes")
+const getTypes = require("../controllers/Type/createTypes");
 
 const router = Router();
 router.post("/", async (req, res) => {

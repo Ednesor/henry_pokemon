@@ -11,7 +11,6 @@ const allDB = async () => {
                 },
             },
         });
-        console.log("allDB",dbData.length)
         let output = [];
         for (const pokemon of dbData) {
             let {name, id, image, hp, attack, defense, special_attack, special_defense, speed, weight, height, createDB} = pokemon;
