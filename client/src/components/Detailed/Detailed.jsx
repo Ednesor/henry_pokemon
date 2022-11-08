@@ -13,13 +13,15 @@ export default function Detailed() {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        console.log(id)
+        console.log(pokemon.onePokemon.id)
         const updateData = () => {
-            if (pokemon.onePokemon.id !== parseInt(id) && !pokemon.loading) {
+            if (pokemon.onePokemon.id !== id && !pokemon.loading) {
                 dispatch(detailed_pokemon(id))
             }
         }
-        if (parseInt(pokemon.onePokemon.id) !== parseInt(id) && !pokemon.loading && typeof (pokemon.onePokemon) !== "string") {
-            updateData()
+        if (pokemon.onePokemon.id !== id && !pokemon.loading && typeof (pokemon.onePokemon) !== "string") {
+            dispatch(detailed_pokemon(id))
         }
     }, [dispatch, id, pokemon.loading, pokemon.onePokemon])
 
@@ -171,7 +173,7 @@ export default function Detailed() {
 
     return (
         <div className={style.container}>
-            {(parseInt(pokemon.onePokemon.id) === parseInt(id) && !pokemon.loading && typeof (pokemon.onePokemon) !== "string") && showData()}
+            {(pokemon.onePokemon.id === id && !pokemon.loading && typeof (pokemon.onePokemon) !== "string") && showData()}
             {pokemon.loading && <Loading />}
             {typeof (pokemon.onePokemon) === "string" && <ErrorPage />}
         </div>
