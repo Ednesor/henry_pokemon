@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetch_create_pokemon } from "../../redux/actions/actions";
+import { fetch_create_pokemon, fetch_pokemon } from "../../redux/actions/actions";
 import style from "./Create.module.css";
 
 export default function Create() {
@@ -152,6 +152,7 @@ export default function Create() {
     const handleSubmit = () => {
         if (checkAllErrors()) {
             dispatch(fetch_create_pokemon(dataPokemon))
+            dispatch(fetch_pokemon())
         }
     }
 

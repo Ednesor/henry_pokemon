@@ -51,8 +51,6 @@ const pokemons = (state = default_array_pokemon, action) => {
             return{
                 ...state,
                 loading: false,
-                originalPokemons: [...state.originalPokemons, action.payload],
-                pokemons: [...state.pokemons, action.payload]
             }
         }
         case DELETE_POKEMON: {
@@ -171,7 +169,7 @@ const pokemons = (state = default_array_pokemon, action) => {
                             for (let i = 0; i < p; i++) {
                                 let min = i;
                                 for (let j = i + 1; j < p; j++) {
-                                    if (newPokes[j].stats[0][1] > newPokes[min].stats[0][1]) {
+                                    if (newPokes[j].stats[1][1] > newPokes[min].stats[1][1]) {
                                         min = j;
                                     }
                                 }
@@ -188,7 +186,7 @@ const pokemons = (state = default_array_pokemon, action) => {
                             for (let i = 0; i < r; i++) {
                                 let min = i;
                                 for (let j = i + 1; j < r; j++) {
-                                    if (newPokes[j].stats[0][1] < newPokes[min].stats[0][1]) {
+                                    if (newPokes[j].stats[1][1] < newPokes[min].stats[1][1]) {
                                         min = j;
                                     }
                                 }

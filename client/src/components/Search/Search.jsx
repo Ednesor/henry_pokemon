@@ -30,7 +30,6 @@ export default function Search() {
     }
     const handleClick = () => {
         if (checkInput()) {
-            console.log("despacho");
             dispatch(search_request(search))
         } else {
             alert("Please enter a name")

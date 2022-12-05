@@ -13,13 +13,6 @@ export default function Detailed() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(id)
-        console.log(pokemon.onePokemon.id)
-        const updateData = () => {
-            if (pokemon.onePokemon.id !== id && !pokemon.loading) {
-                dispatch(detailed_pokemon(id))
-            }
-        }
         if (pokemon.onePokemon.id !== id && !pokemon.loading && typeof (pokemon.onePokemon) !== "string") {
             dispatch(detailed_pokemon(id))
         }
