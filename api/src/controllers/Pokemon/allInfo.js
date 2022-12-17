@@ -36,7 +36,9 @@ const allPokes = async (name) => {
                     return poke;
                 }
 
-                const pokeAPI = await axios(`https://pokeapi.co/api/v2/pokemon/${name}`);
+                const pokeAPI = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`, {
+                    headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+                });
                 if (pokeAPI) {
                     let stats = pokeAPI.data.stats.map(s => [s.stat.name, s.base_stat]);
                     let types = pokeAPI.data.types.map(t => t.type.name);
@@ -59,6 +61,7 @@ const allPokes = async (name) => {
 
         let apiPokes = await allApi("https://pokeapi.co/api/v2/pokemon");
         let dbPokes = await allDB();
+        console.log(apiPokes)
         return [...apiPokes, ...dbPokes]
     } catch (error) {
         console.log("controllers/Pokemon/allInfo", error)

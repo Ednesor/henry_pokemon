@@ -35,7 +35,9 @@ const getPoke = async (id) => {
     }
     //Si el id es de la API
     if(!isNaN(id)){
-        const poke = await axios(`https://pokeapi.co/api/v2/pokemon/${id}`)
+        const poke = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+            headers: { "Accept-Encoding": "gzip,deflate,compress" } 
+        })
         let stats = poke.data.stats.map(s => [s.stat.name, s.base_stat]);
         let types = poke.data.types.map(t => t.type.name);
         output = {

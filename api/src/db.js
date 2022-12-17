@@ -2,32 +2,19 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const {
-  DB_USER, DB_PASSWORD, DB_HOST
-} = require("../config.js");
-const { PGUSER, PGPASSWORD, PGHOST, PGDATABASE, PGPORT, DATABASE_URL } = process.env;
 
-let sequelize =
-  process.env.NODE_ENV === "production"
-    ? new Sequelize({
-        database: PGDATABASE,
-        dialect: "postgres",
-        host: PGHOST,
-        port: PGPORT,
-        username: PGUSER,
-        password: PGPASSWORD,
-        databaseUrl: DATABASE_URL,
-        pool: { max: 3, min: 1, idle: 10000 },
-        dialectOptions: {
-          ssl: { require: true, rejectUnauthorized: false },
-          keepAlive: true,
-        },
-        ssl: true,
-      })
-    : new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`, {
-        logging: false,
-        native: false,
-      });
+const { PGUSER, PGPASSWORD, PGHOST, PGDATABASE, PGPORT, DATABASE_URL } = process.env;
+const {
+  DB_USER, DB_PASSWORD, DB_HOST, DB_NAME,
+} = process.env; 
+console.log(DB_USER, DB_PASSWORD, DB_HOST)
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`, {
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+});
+sequelize.authenticate()
+.then( () => console.log('Connection has been established successfully.'))
+.catch(err => {console.error('Unable to connect to the database:'); });
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
